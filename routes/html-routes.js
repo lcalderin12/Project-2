@@ -19,38 +19,55 @@ module.exports = function (app) {
     // If the user already has an account send them to the members page
     if (req.user) {
       res.render("index");
+    }else{
+      res.render("login");
     }
-    res.render("login");
+
   });
 
   app.get("/signup", function (req, res) {
     // If the user already has an account send them to the members page
     if (req.user) {
       res.render("index");
+    }else{
+      res.render("signup");
     }
-    res.render("signup");
   });
 
   app.get("/all", function (req, res) {
-    res.render("all");
+    if (req.user) {
+      res.render("all");
+    } else {
+      res.render("login");
+    }
+
   });
 
   app.get("/add", function (req, res) {
-    res.render("add");
+    if (req.user) {
+      res.render("add");
+    } else {
+      res.render("login");
+    }
   });
 
   app.get("/contact", function (req, res) {
     res.render("contact");
   });
 
-  //app.get is redundant
-  app.get("/", isAuthenticated, function (req, res) {
-    res.render("index");
-  });
-
   // Route for logging user out
   app.get("/logout", function (req, res) {
     req.logout();
     res.redirect("login");
+
   });
+
+  //redundanct
+  // app.get("/", isAuthenticated, function (req, res) {
+  //   res.render("index");
+  //   res.render("contact");
+  // });
+  // app.get("/all", isAuthenticated, function (req, res) {
+  //   res.render("all");
+  // });
 };
