@@ -27,11 +27,7 @@ module.exports = function (app) {
       });
   });
 
-  // Route for logging user out
-  app.get("/logout", function (req, res) {
-    req.logout();
-    res.redirect("login");
-  });
+
 
 
   // GET route for getting all of the posts and return them to the user with res.json

@@ -8,11 +8,10 @@ const { get } = require("http");
 module.exports = function (app) {
   // index route loads view/index.handlebars
   app.get("/", function (req, res) {
-
     if (req.user) {
       res.render("index");
     } else {
-      res.render("signup");
+      res.render("login");
     }
   });
 
@@ -22,6 +21,14 @@ module.exports = function (app) {
       res.render("index");
     }
     res.render("login");
+  });
+
+  app.get("/signup", function (req, res) {
+    // If the user already has an account send them to the members page
+    if (req.user) {
+      res.render("index");
+    }
+    res.render("signup");
   });
 
   app.get("/all", function (req, res) {
@@ -36,9 +43,14 @@ module.exports = function (app) {
     res.render("contact");
   });
 
+  //app.get is redundant
   app.get("/", isAuthenticated, function (req, res) {
     res.render("index");
   });
 
-
+  // Route for logging user out
+  app.get("/logout", function (req, res) {
+    req.logout();
+    res.redirect("login");
+  });
 };
