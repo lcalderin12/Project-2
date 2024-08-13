@@ -37,6 +37,8 @@ module.exports = function (app) {
   app.get("/all", function (req, res) {
     if (req.user) {
       res.render("all");
+      //.then( function(){window.location.replace("/all");}
+      //document.body.classList.toggle("card-header text-center");
     } else {
       res.render("login");
     }
