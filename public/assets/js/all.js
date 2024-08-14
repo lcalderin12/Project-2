@@ -50,6 +50,3 @@ $.get("/api/all", function(data) {
   });
 
 });
-// .then(function(){
-//   document.getElementById("recipe-well-0").focus();
-// });
