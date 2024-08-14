@@ -15,9 +15,10 @@ console.log("NODE_ENV: "+ process.env.NODE_ENV);
 
 
 let sequelize;
-if (env==="production") {
+if (env=="production") {
   sequelize = new Sequelize(process.env[config.JawsDB], config);
-} else if (env==="development"||"test"){
+  console.log("Sequelize running in NODE_ENV: "+ process.env.NODE_ENV);
+} else if (env=="development"||"test"){
   sequelize = new Sequelize(process.env[config.database], process.env[config.username], process.env[config.password], config);
 }else {
   console.log("PLEASE CHOOSE AN ENVIRONMENT...");
