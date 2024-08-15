@@ -1,6 +1,6 @@
 
 
-"use strict";
+// "use strict";
 require("dotenv").config();
 const fs = require("fs");
 const path = require("path");
@@ -15,22 +15,20 @@ console.log("NODE_ENV: "+ process.env.NODE_ENV);
 
 
 let sequelize;
-if (env=="production") {
-  sequelize = new Sequelize(process.env[config.JawsDB], config);
-  console.log("Sequelize running in NODE_ENV: "+ process.env.NODE_ENV);
+
+if (process.env.NODE_ENV=="production") {
+  sequelize = new Sequelize(process.env.JAWSDB_URL, config);
+
+// if (env=="production") {
+//   sequelize = new Sequelize(process.env[config.JawsDB], config);
+//   console.log("Sequelize running in NODE_ENV: "+ process.env.NODE_ENV);
 } else if (env=="development"||"test"){
   sequelize = new Sequelize(process.env[config.database], process.env[config.username], process.env[config.password], config);
   console.log("Sequelize running in NODE_ENV: "+ process.env.NODE_ENV);
 }else {
   console.log("PLEASE CHOOSE AN ENVIRONMENT...");
 }
-// sequelize = new Sequelize({
-//     dialect: "mysql",
-//     database: 'recipe_db',
-//     user: 'root',
-//     password: 'password',
-//     host: 'localhost'
-//   });
+
 
 fs
   .readdirSync(__dirname)
