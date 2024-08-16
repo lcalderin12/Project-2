@@ -27,7 +27,7 @@
           <form action="" method="POST" role="form">
             <div class="form-group">
               <label for="">Recipe Name</label>
-              <input type="text" class="form-control" id="name" placeholder="">
+              <input type="text" class="form-control" id="name" placeholder="" autofocus>
             </div>
             <div class="form-group">
               <label for="">Ingredient</label>
@@ -35,7 +35,7 @@
             </div>
             <div class="form-group">
               <label for="">Category</label>
-              <input type="text" class="form-control" id="category" placeholder="">
+              <input type="text" name="test" class="form-control" id="category" placeholder="">
             </div>
             <div class="form-group">
               <label for="">Content</label>
@@ -43,7 +43,7 @@
             </div>
           </form>
           <br>
-            <a class="text-left" id="contact_link" href="/contact">CONTACT</a>
+          <a class="text-left" id="contact_link" href="/contact">CONTACT</a>
           <div class="text-right">
             <button type="submit" class="btn btn-primary btn-md" id="add-btn">
               <span class="fa fa-book"></span> Add your Recipe!</button>
@@ -57,5 +57,8 @@
 </div>
 
 
-<script src="https://code.jquery.com/jquery.js"></script>
+<script src="https://code.jquery.com/jquery.js">
+ //document.getElementbyId("content").focus()
+ //$("input[name='test']").focus();
+</script>
 <script src="/assets/js/add.js"></script>

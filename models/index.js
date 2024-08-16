@@ -1,21 +1,34 @@
-"use strict";
 
+
+// "use strict";
 require("dotenv").config();
 const fs = require("fs");
 const path = require("path");
 const Sequelize = require("sequelize");
 const basename = path.basename(__filename);
-const env = process.env.NODE_ENV || "production";
+const env = process.env.NODE_ENV ;
 const config = require(__dirname + "/../config/config.js")[env];
 const db = {};
 
 
+console.log("NODE_ENV: "+ process.env.NODE_ENV);
+
+
 let sequelize;
-if (config.use_env_variable) {
-  sequelize = new Sequelize(process.env[config.use_env_variable], config);
-} else {
-  sequelize = new Sequelize(config.database, config.username, config.password, config);
+
+if (process.env.NODE_ENV=="production") {
+  sequelize = new Sequelize(process.env.JAWSDB_URL, config);
+
+// if (env=="production") {
+//   sequelize = new Sequelize(process.env[config.JawsDB], config);
+//   console.log("Sequelize running in NODE_ENV: "+ process.env.NODE_ENV);
+} else if (env=="development"||"test"){
+  sequelize = new Sequelize(process.env[config.database], process.env[config.username], process.env[config.password], config);
+  console.log("Sequelize running in NODE_ENV: "+ process.env.NODE_ENV);
+}else {
+  console.log("PLEASE CHOOSE AN ENVIRONMENT...");
 }
+
 
 fs
   .readdirSync(__dirname)

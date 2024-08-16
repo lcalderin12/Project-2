@@ -27,11 +27,7 @@ module.exports = function (app) {
       });
   });
 
-  // Route for logging user out
-  app.get("/logout", function (req, res) {
-    req.logout();
-    res.redirect("login");
-  });
+
 
 
   // GET route for getting all of the posts and return them to the user with res.json
@@ -100,7 +96,7 @@ module.exports = function (app) {
     async function main() {
       // create reusable transporter object using the default SMTP transport
       let transporter = nodemailer.createTransport({
-        host: "smtp.gmail.com",
+        host: "smtp.zoho.com",
         port: 465,
         secure: true, // true for 465, false for other ports
         auth: {
@@ -116,7 +112,7 @@ module.exports = function (app) {
       let info = await transporter.sendMail({
         from: `'Recipe Track App' <${process.env.MAIL_USER}>`, // sender address
         to: `'Contacts' <${process.env.MAIL_USER}>`, // list of receivers
-        subject: req.body.category, // Subject line
+        subject: `'Recipe Tracker App' <${req.body.category}>`, // Subject line
         text: req.body.content, // plain text body
         html: `<p>Contact Name: <b>${req.body.name}</b></p></br>
               <p>Contact Info: <b>${req.body.contactInfo}</b></p></br>

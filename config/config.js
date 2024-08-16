@@ -1,3 +1,7 @@
+
+//When using "use strict","development" and "test" value variables have to
+//be put in quotes in order to read from .env (just like "JAWSDB_URL")
+//"use strict";
 module.exports = {
   "development": {
     "username": process.env.DB_USER,
@@ -8,16 +12,17 @@ module.exports = {
     "dialect": "mysql"
   },
   "test": {
-    "username": "",
-    "password": "",
-    "database": "",
-    "host": "",
-    "port": "",
-    "dialect": ""
-
+    "username": process.env.USER,
+    "password": process.env.PASS,
+    "database": process.env.DATABASE,
+    "host": process.env.HOST,
+    "port": process.env.PORT_TWO,
+    "dialect": "mysql"
   },
+  //variable only works with quotes whether "use strict" is being used or not
   "production": {
-    "use_env_variable": "JAWSDB_URL",
+    "JawsDB": "JawsDB_URL",
     "dialect": "mysql"
   }
 };
+

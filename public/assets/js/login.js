@@ -41,7 +41,7 @@ $(document).ready(function () {
   $("#btn_signup").on("click", function () {
     console.log("went there");
 
-    window.location.replace("/");
+    window.location.replace("/signup");
   });
 
 
