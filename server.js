@@ -1,10 +1,10 @@
 
-require("dotenv");
+//require("dotenv");
 var express = require("express");
 var session = require("express-session");
 // Requiring passport as we've configured it
 var passport = require("./config/passport");
-
+//import 'public/favicon.ico';
 
 var PORT = process.env.PORT || 3030;
 var app = express();
@@ -18,6 +18,8 @@ app.use(express.static("public"));
 app.use(session({ secret: "keyboard cat", resave: true, saveUninitialized: true }));
 app.use(passport.initialize());
 app.use(passport.session());
+
+//app.use("/favicon.ico", express.static("favicon.ico"));
 
 // SETUP HANDLEBARS
 var exphbs = require("express-handlebars");

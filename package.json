@@ -18,7 +18,7 @@
   "bugs": {
     "url": "https://github.com/lcalderin12/Project-2/issues"
   },
-  "homepage": "https://github.com/lcalderin12/Project-2#readme",
+ 
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "dotenv": "^8.2.0",
